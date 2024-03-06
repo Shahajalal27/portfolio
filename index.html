@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shahajalal's Portfolio</title>
+    <style>
+        body {
+            margin: 20px;
+            background: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            display: block;
+            margin: 20px auto;
+            object-fit: cover;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            color: black;
+        }
+
+        a {
+            position: relative;
+            display: block;
+            margin: 10px auto;
+            padding: 15px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            width: 500px;
+        }
+
+        a img {
+            position: absolute;
+            top: 15%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 40px;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #333;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: new FormData(this),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Message Sent!');
+                        window.location.href = 'index.html';
+                    } else {
+                        alert('Failed to send message. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error submitting form:', error);
+                    alert('An error occurred. Please try again later.');
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <img src="mypic.png" alt="My Picture">
+    <h1>Shahajalal Islam</h1>
+    <h2>Hello! Welcome to my Personal Portfolio.</h2>
+    <br>
+    <h1>My Projects</h1>
+    <a href="#">Project 1 (Coming Soon)</a>
+
+    <br>
+    <h1>Socials</h1>
+    <a href="https://www.linkedin.com/in/shahajalal27/" target="_blank">Linkedin<img src="linkedin.png" alt="LinkedIn"></a>
+    <a href="https://www.instagram.com/akhi.sj/" target="_blank">Instagram<img src="instagram.png" alt="Instagram"></a>
+    <a href="https://www.facebook.com/Shahajalal0/" target="_blank">Facebook<img src="facebook.png" alt="Facebook"></a>
+    <a href="https://github.com/Shahajalal27" target="_blank">GitHub <img src="github.png" alt="GitHub"></a>
+    <br>
+    <h1>Contact Me</h1>
+    <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="d659353f-66c4-4128-8870-137b4716a088">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+</body>
+
+</html>
